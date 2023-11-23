@@ -29,6 +29,12 @@ function App() {
     }
 ])
 
+const getUsers = async () => {
+  const response = await axios.get('http://localhost:8080/');
+  console.log(response);
+  setUsers(response.body)
+}
+
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -41,17 +47,13 @@ const handleSubmit = (e) => {
   axios.post('http://localhost:8080/addUser', newUser)
   .then(function (response) {
     console.log(response);
+    getUsers();
   })
   .catch(function (error) {
     console.log(error);
   });
 }
 
-const getUsers = async () => {
-  const response = await axios.get('http://localhost:8080/');
-  console.log(response);
-  setUsers(response.body)
-}
 
 useEffect(() => {
   getUsers()
