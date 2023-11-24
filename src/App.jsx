@@ -8,33 +8,13 @@ function App() {
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState(20);
   const [phoneNumber, setphoneNumber] = useState("")
-  const [users, setUsers] = useState([
-    {
-      firstName: "John",
-      lastName: "Doe",
-      age: 30,
-      phone: "123-456-7890"
-    },
-    {
-      firstName: "Alice",
-      lastName: "Johnson",
-      age: 40,
-      phone: "555-123-4567"
-    },
-    {
-      firstName: "Alice",
-      lastName: "Johnson",
-      age: 40,
-      phone: "555-123-4567"
-    }
-])
+  const [users, setUsers] = useState([]);
 
 const getUsers = async () => {
   const response = await axios.get('http://localhost:8080/');
   console.log(response);
-  setUsers(response.body)
+  setUsers(response.data)
 }
-
 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -44,9 +24,10 @@ const handleSubmit = (e) => {
     age: Number(age),
     phoneNumber: phoneNumber
   }
+  console.log(newUser);
   axios.post('http://localhost:8080/addUser', newUser)
   .then(function (response) {
-    console.log(response);
+    console.log("The ersponse is: \n", response);
     getUsers();
   })
   .catch(function (error) {
