@@ -20,9 +20,10 @@ const handleSaveModifications = () => {
     firstName,
     lastName,
     age,
-    phone:phoneNumber
+    phone:phoneNumber,
+    id:user.id
   }
-  saveModifications(newUser, user.id)
+  saveModifications(newUser)
   setIsUserUnderModification(false)
 }
 
