@@ -8,7 +8,14 @@ function App() {
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState(20);
   const [phoneNumber, setphoneNumber] = useState("")
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([
+   { firstName:"John",
+    lastName:"Doe",
+    age: 13,
+    phone:"12423443543",
+    id:12
+    }
+  ]);
 
 const getUsers = async () => {
   const response = await axios.get('http://localhost:8080');
@@ -39,6 +46,18 @@ const handleSubmit = (e) => {
 useEffect(() => {
   getUsers()
 }, [])
+
+const handleDelete =  (id) => {
+  console.log(id);
+  axios.delete('http://localhost:8080/deleteUser', id)
+  .then(function (response) {
+    console.log("The ersponse is: \n", response);
+    getUsers();
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
 
 
   return (
@@ -88,11 +107,12 @@ useEffect(() => {
         <th>Last name</th>
         <th>Age</th>
         <th>Phone</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       { users && users.map((user, id) => {
-        return <User user={user} key={id}/>
+        return <User user={user} deleteUser={handleDelete} key={id}/>
       }) }
     </tbody>
   </table>

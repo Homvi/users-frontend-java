@@ -1,4 +1,4 @@
-const User = ({user}) => {
+const User = ({user, deleteUser}) => {
   return (
     <tr>
         <td></td>
@@ -6,6 +6,7 @@ const User = ({user}) => {
         <td>{user.lastName}</td>
         <td>{user.age}</td>
         <td>{user.phone}</td>
+        <td><button onClick={() => deleteUser(user.id)} className="btn btn-error">Delete</button></td>
     </tr>
   )
 }
