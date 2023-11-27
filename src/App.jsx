@@ -62,7 +62,7 @@ const handleDelete =  (id) => {
 }
 
 const handleSaveModifications = async (newUser, id) => {
-  const res = await axios.put('http://localhost:8080/updateUser', { newUser: newUser, id:id });
+  const res = await axios.put('http://localhost:8080/updateUser', { newUser, id });
   console.log(res);
   console.log(newUser, id);
   getUsers();
