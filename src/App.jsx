@@ -61,6 +61,13 @@ const handleDelete =  (id) => {
   });
 }
 
+const handleSaveModifications = async (newUser, id) => {
+  const res = await axios.put('http://localhost:8080/updateUser', { newUser: newUser, id:id });
+  console.log(res);
+  console.log(newUser, id);
+  getUsers();
+}
+
 
   return (
     <>
@@ -110,11 +117,12 @@ const handleDelete =  (id) => {
         <th>Age</th>
         <th>Phone</th>
         <th>Delete</th>
+        <th>Modify</th>
       </tr>
     </thead>
     <tbody>
       { users && users.map((user, id) => {
-        return <User user={user} deleteUser={handleDelete} key={id}/>
+        return <User user={user} saveModifications={handleSaveModifications} deleteUser={handleDelete} key={id}/>
       }) }
     </tbody>
   </table>
