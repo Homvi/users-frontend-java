@@ -4,17 +4,19 @@ import axios from "axios";
 
 function App() {
 
+/* example user */
+/*{ firstName:"John",
+  lastName:"Doe",
+  age: 13,
+  phone:"12423443543",
+  id:12
+  } */
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [age, setAge] = useState(20);
   const [phoneNumber, setphoneNumber] = useState("")
   const [users, setUsers] = useState([
-   { firstName:"John",
-    lastName:"Doe",
-    age: 13,
-    phone:"12423443543",
-    id:12
-    }
   ]);
 
 const getUsers = async () => {
