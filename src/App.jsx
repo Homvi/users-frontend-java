@@ -22,7 +22,7 @@ const handleSubmit = (e) => {
     firstName: firstName,
     lastName: lastName,
     age: Number(age),
-    phoneNumber: phoneNumber
+    phone: phoneNumber
   }
   console.log(newUser);
   axios.post('http://localhost:8080/addUser', newUser)
