@@ -51,7 +51,7 @@ useEffect(() => {
 
 const handleDelete =  (id) => {
   console.log(id);
-  axios.delete('http://localhost:8080/deleteUser', id)
+  axios.delete('http://localhost:8080/deleteUser', {id:id})
   .then(function (response) {
     console.log("The ersponse is: \n", response);
     getUsers();
