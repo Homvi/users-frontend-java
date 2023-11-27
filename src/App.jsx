@@ -65,7 +65,6 @@ const handleSaveModifications = async (newUser) => {
   console.log("The new user should is: ", newUser);
   const res = await axios.put('http://localhost:8080/updateUser',  newUser);
   console.log(res);
-  console.log(newUser, id);
   getUsers();
 }
 
